@@ -9,7 +9,7 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC");
     <h1>CRUD Data Barang</h1>
     <hr>
     <a href="create.php" class="btn btn-primary mb-1">Tambah Data</a>
-    <table class="table table-bordered table-striped mt-3">
+    <table class="table table-bordered table-striped mt-3" id="table">
         <thead>
             <tr>
                 <th scope="col">No</th>
