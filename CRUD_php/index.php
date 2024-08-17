@@ -1,7 +1,9 @@
 <?php
 
 include 'layout/header.php';
-$data_barang = select("SELECT * FROM barang");
+
+// fungsi ORDER BY id_barang DESC mengurutkan id_barang dari angka terbesar hingga kecil di database
+$data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC");
 ?>
 <div class="container mt-5">
     <h1>CRUD Data Barang</h1>
@@ -30,7 +32,7 @@ $data_barang = select("SELECT * FROM barang");
                     <td><?= date('d-m-Y | H:i:s', strtotime($barang['tanggal'])); ?></td>
                     <td width="15%" class="text-center">
                         <a class="btn btn-success" href="update.php?id_barang=<?= $barang['id_barang']; ?>" role="button">Ubah</a>
-                        <a class="btn btn-danger" href="#" role="button">Hapus</a>
+                        <a class="btn btn-danger" href="delete.php?id_barang=<?= $barang['id_barang']; ?>" role="button" onclick="return confirm('Yakin Data ini Dihapus ?');">Hapus</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
