@@ -26,7 +26,8 @@ if (isset($_POST['tambah'])) {
 <div class="container mt-5">
     <h1>Tambah Data Mahasiswa</h1>
     <hr>
-    <form action="" method="post">
+    <!-- enctype="multipart/form-data" fungsinya mengunggah sebuah file -->
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Mahasiswa</label>
             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Mahasiswa" required>
@@ -60,7 +61,7 @@ if (isset($_POST['tambah'])) {
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
-            <input type="text" class="form-control" id="foto" name="foto" placeholder="Foto" required>
+            <input type="file" class="form-control" id="foto" name="foto" placeholder="Foto">
         </div>
 
         <button type="submit" name="tambah" class="btn btn-primary">Tambah</button>

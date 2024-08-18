@@ -82,7 +82,12 @@ function create_mahasiswa($post)
     $jk = $post['jk'];
     $telepon = $post['telepon'];
     $email = $post['email'];
-    $foto = $post['foto'];
+    $foto = upload_file();
+
+    // Check upload foto
+    if (!$foto) {
+        return false;
+    }
 
     // query tambah data
     $query = "INSERT INTO mahasiswa VALUES (null, '$nama', '$prodi', '$jk', '$telepon', '$email', '$foto')";
@@ -92,4 +97,52 @@ function create_mahasiswa($post)
 
     // mengembalikan data diisi ke data yang baru
     return mysqli_affected_rows($db);
+}
+
+// fungsi upload file
+function upload_file()
+{
+    // mengambil atribut name dengan value foto
+    $namaFile = $_FILES['foto']['name'];
+
+    $ukuranFile = $_FILES['foto']['size'];
+    $error = $_FILES['foto']['error'];
+
+    // penyimpanan sementara
+    $tmpName = $_FILES['foto']['tmp_name'];
+
+    // Check file yang diupload
+    $extensifileValid = ['jpg', 'jpeg', 'png'];
+    // fungsi explode() memeriksa extensi setelah nama file
+    $extensifile = explode('.', $namaFile); // foto.jpg
+    // fungsi strtolower() mengubah extensi nya menjadi huruf kecil semua
+    $extensifile = strtolower(end($extensifile)); // .JPG -> .jpg
+
+    // Check format/extensi file
+    if (!in_array($extensifile, $extensifileValid)) {
+        //pesan gagal
+        echo "<script>
+            alert('Format File Tidak Valid');
+            document.location.href = 'create-mahasiswa.php';        
+        </script>";
+        die();
+    }
+
+    // Check ukuran file
+    if ($ukuranFile > 2048000) {
+        echo "<script>
+            alert('Ukuran File Max 2 MB');
+            document.location.href = 'create-mahasiswa.php';        
+        </script>";
+    }
+
+    // generate nama file baru dan fungsi nya untuk keamanan
+    // contoh foto.jpg -> aowndoinaw3232n423
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= ".";
+    $namaFileBaru .= $extensifile;
+
+    // pindahkan ke folder local
+    move_uploaded_file($tmpName, 'assets/img/' . $namaFileBaru); //assets/img/wndaon1231n1o
+    return $namaFileBaru;
 }
