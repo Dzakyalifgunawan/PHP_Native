@@ -1,5 +1,7 @@
 <?php
 
+$title = 'Data Barang';
+
 include 'layout/header.php';
 
 // fungsi ORDER BY id_barang DESC mengurutkan id_barang dari angka terbesar hingga kecil di database

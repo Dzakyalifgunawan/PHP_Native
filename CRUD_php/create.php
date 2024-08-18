@@ -1,5 +1,8 @@
 <?php
 
+$title = 'Create Barang';
+
+
 include 'layout/header.php';
 
 // check apakah tombol tambah ditekan
