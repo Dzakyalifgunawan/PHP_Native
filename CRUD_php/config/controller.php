@@ -22,9 +22,9 @@ function create_barang($post)
     global $db;
 
     // variabel ini mengambil atribut name tag input
-    $nama = $post['nama'];
-    $jumlah = $post['jumlah'];
-    $harga = $post['harga'];
+    $nama = strip_tags($post['nama']);
+    $jumlah = strip_tags($post['jumlah']);
+    $harga = strip_tags($post['harga']);
 
     // query tambah data
     $query = "INSERT INTO barang VALUES (null, '$nama', '$jumlah', '$harga', CURRENT_TIMESTAMP())";
@@ -43,9 +43,9 @@ function update_barang($post)
 
     // variabel ini mengambil atribut name tag input
     $id_barang = $post['id_barang'];
-    $nama = $post['nama'];
-    $jumlah = $post['jumlah'];
-    $harga = $post['harga'];
+    $nama = strip_tags($post['nama']);
+    $jumlah = strip_tags($post['jumlah']);
+    $harga = strip_tags($post['harga']);
 
     // query update data
     // kenapa tidak tambahkan CURRENT_TIMESTAMP() karena waktu dan tanggal akan diupdate secara otomatis
@@ -77,11 +77,12 @@ function create_mahasiswa($post)
     global $db;
 
     // variabel ini mengambil atribut name tag input
-    $nama = $post['nama'];
-    $prodi = $post['prodi'];
-    $jk = $post['jk'];
-    $telepon = $post['telepon'];
-    $email = $post['email'];
+    // strip_tags untuk mengamankan serangan XSS
+    $nama = strip_tags($post['nama']);
+    $prodi = strip_tags($post['prodi']);
+    $jk = strip_tags($post['jk']);
+    $telepon = strip_tags($post['telepon']);
+    $email = strip_tags($post['email']);
     $foto = upload_file();
 
     // Check upload foto
@@ -91,6 +92,38 @@ function create_mahasiswa($post)
 
     // query tambah data
     $query = "INSERT INTO mahasiswa VALUES (null, '$nama', '$prodi', '$jk', '$telepon', '$email', '$foto')";
+
+
+    mysqli_query($db, $query);
+
+    // mengembalikan data diisi ke data yang baru
+    return mysqli_affected_rows($db);
+}
+
+function update_mahasiswa($post)
+{
+    global $db;
+
+    // variabel ini mengambil atribut name tag input
+    // strip_tags untuk mengamankan serangan XSS
+    $id_mahasiswa = strip_tags($post['id_mahasiswa']);
+    $nama = strip_tags($post['nama']);
+    $prodi = strip_tags($post['prodi']);
+    $jk = strip_tags($post['jk']);
+    $telepon = strip_tags($post['telepon']);
+    $email = strip_tags($post['email']);
+    $fotolama = strip_tags($post['fotolama']);
+
+    // Check upload foto baru atau tidak
+    // maksud ['foto']['error'] == 4 jika ada foto error 4 maka tidak upload file baru
+    if ($_FILES['foto']['error'] == 4) {
+        $foto = $fotolama;
+    } else {
+        $foto = upload_file();
+    }
+
+    // query ubah data
+    $query = "UPDATE mahasiswa SET nama= '$nama', prodi = '$prodi', jk = '$jk' , telepon = '$telepon', email = '$email', foto = '$foto' WHERE id_mahasiswa = $id_mahasiswa";
 
 
     mysqli_query($db, $query);
@@ -142,7 +175,25 @@ function upload_file()
     $namaFileBaru .= ".";
     $namaFileBaru .= $extensifile;
 
-    // pindahkan ke folder local
+    // pindahkan ke folder img
     move_uploaded_file($tmpName, 'assets/img/' . $namaFileBaru); //assets/img/wndaon1231n1o
     return $namaFileBaru;
+}
+
+function delete_mahasiswa($id_mahasiswa)
+{
+    global $db;
+
+    // unlink file
+    // ambil foto sesuai data yang dipilih
+    $foto = select("SELECT * FROM mahasiswa WHERE id_mahasiswa = $id_mahasiswa")[0];
+    unlink("assets/img/" . $foto['foto']);
+
+    // query hapus data mahasiswa
+    $query = "DELETE FROM mahasiswa WHERE id_mahasiswa = $id_mahasiswa";
+
+    mysqli_query($db, $query);
+
+    // mengembalikan data diisi ke data yang baru
+    return mysqli_affected_rows($db);
 }
