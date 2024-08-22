@@ -30,7 +30,7 @@ include 'config/app.php';
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="index.php">Barang</a>
                         <a class="nav-link" href="mahasiswa.php">Mahasiswa</a>
-                        <a class="nav-link" href="#">Modal</a>
+                        <a class="nav-link" href="modal.php">Modal</a>
                     </div>
                 </div>
             </div>

@@ -197,3 +197,68 @@ function delete_mahasiswa($id_mahasiswa)
     // mengembalikan data diisi ke data yang baru
     return mysqli_affected_rows($db);
 }
+
+function create_akun($post)
+{
+    global $db;
+
+    // variabel ini mengambil atribut name tag input
+    // strip_tags untuk mengamankan serangan XSS
+    $nama = strip_tags($post['nama']);
+    $username = strip_tags($post['username']);
+    $email = strip_tags($post['email']);
+    $password = strip_tags($post['password']);
+    $level = strip_tags($post['level']);
+
+    // enskripsi password
+    $pass = password_hash($password, PASSWORD_DEFAULT);
+
+    // query tambah data
+    $query = "INSERT INTO akun VALUES (null, '$nama', '$username', '$email', '$pass', '$level')";
+
+
+    mysqli_query($db, $query);
+
+    // mengembalikan data diisi ke data yang baru
+    return mysqli_affected_rows($db);
+}
+
+function update_akun($post)
+{
+    global $db;
+
+    // variabel ini mengambil atribut name tag input
+    // strip_tags untuk mengamankan serangan XSS
+    $id_akun = strip_tags($post['id_akun']);
+    $nama = strip_tags($post['nama']);
+    $username = strip_tags($post['username']);
+    $email = strip_tags($post['email']);
+    $password = strip_tags($post['password']);
+    $level = strip_tags($post['level']);
+
+    // enskripsi password
+    $pass = password_hash($password, PASSWORD_DEFAULT);
+
+    // query ubah data
+    $query = "UPDATE akun SET nama = '$nama', username = '$username', email = '$email', password = '$pass', level = '$level' WHERE id_akun = $id_akun";
+
+
+    mysqli_query($db, $query);
+
+    // mengembalikan data diisi ke data yang baru
+    return mysqli_affected_rows($db);
+}
+
+// fungsi menghapus data Akun
+function delete_akun($id_akun)
+{
+    global $db;
+
+    // query hapus data Akun
+    $query = "DELETE FROM akun WHERE id_akun = $id_akun";
+
+    mysqli_query($db, $query);
+
+    // mengembalikan data diisi ke data yang baru
+    return mysqli_affected_rows($db);
+}
