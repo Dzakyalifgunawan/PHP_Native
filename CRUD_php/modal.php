@@ -41,10 +41,10 @@ if (isset($_POST['ubah'])) {
 }
 ?>
 <div class="container mt-5">
-    <h1>Data Akun</h1>
+    <h1><i class="fas fa-solid fa-users"></i> Data Akun</h1>
     <hr>
     <!-- data-bs-target harus sama id yapng ada di modal tambah -->
-    <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah Data</button>
+    <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#modalTambah"><i class="fas fa-plus-circle"></i> Tambah Data</button>
     <table class="table table-bordered table-striped mt-3" id="table">
         <thead>
             <tr>
@@ -66,8 +66,8 @@ if (isset($_POST['ubah'])) {
                     <td><?= $akun['email']; ?></td>
                     <td>Password Ter-enskripsi</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#modalUbah<?= $akun['id_akun']; ?>">Ubah</button>
-                        <button type="submit" class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#modalHapus<?= $akun['id_akun']; ?>">Hapus</button>
+                        <button type="button" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#modalUbah<?= $akun['id_akun']; ?>"><i class="fas fa-edit"></i> Ubah</button>
+                        <button type="submit" class="btn btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#modalHapus<?= $akun['id_akun']; ?>"><i class="fas fa-solid fa-trash"></i> Hapus</button>
                     </td>
                 </tr>
             <?php endforeach; ?>

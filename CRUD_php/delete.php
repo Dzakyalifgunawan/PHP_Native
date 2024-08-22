@@ -1,5 +1,14 @@
 <?php
 
+// membatasi halaman sebelum login
+if (!isset($_SESSION['login'])) {
+    echo "<script>
+        alert('Login Terlebih Dahulu');
+        document.location.href = 'login.php';
+        </script>";
+    exit;
+}
+
 include 'config/app.php';
 
 // menerima id_barang yang dipilih pengguna
