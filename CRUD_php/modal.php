@@ -202,7 +202,7 @@ if (isset($_POST['ubah'])) {
                                 </select>
                             </div>
 
-                            <!-- jika bukan level 1 (admin) maka level 2 (Operator Barang) dan 3 (Operator Mahasiswa) di hidden option level nya -->
+                            <!-- jika bukan level 1 (admin) maka data akun di halaman level 2 (Operator Barang) dan 3 (Operator Mahasiswa) di hidden option level nya -->
                         <?php else : ?>
                             <input type="hidden" name="level" value="<?= $akun['level']; ?>">
                         <?php endif; ?>
