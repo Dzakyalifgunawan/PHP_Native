@@ -28,14 +28,19 @@ include 'config/app.php';
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="index.php">Barang</a>
-                        <a class="nav-link" href="mahasiswa.php">Mahasiswa</a>
-                        <a class="nav-link" href="modal.php">Modal</a>
+                        <?php if ($_SESSION['level'] == 1 or $_SESSION['level'] == 2) : ?>
+                            <a class="nav-link active" aria-current="page" href="index.php">Barang</a>
+                        <?php endif; ?>
+
+                        <?php if ($_SESSION['level'] == 1 or $_SESSION['level'] == 3) : ?>
+                            <a class="nav-link" href="mahasiswa.php">Mahasiswa</a>
+                        <?php endif; ?>
+                        <a class="nav-link" href="modal.php">Akun</a>
                     </div>
                 </div>
                 <div class="navbar-nav">
                     <a class="navbar-brand" href="#"><?= $_SESSION['nama']; ?></a>
-                    <a class="nav-link" href="logout.php">Log Out</a>
+                    <a class="nav-link" href="logout.php" onclick="return confirm('Yakin Ingin Keluar ?')">Log Out</a>
                 </div>
             </div>
         </nav>

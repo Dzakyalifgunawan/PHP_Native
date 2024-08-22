@@ -26,8 +26,13 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $hasil['email'];
             $_SESSION['level'] = $hasil['level'];
 
-            // jika login benar arahkan ke file index.php
-            header("Location: index.php");
+            // jika login benar maka akan diarahkan sesuai user loginnya
+            // maksudnya $_SESSION['level'] != 1 and $_SESSION['level'] != 2 jika bukan level nya bukan 1 (admin) dan 2 (Operator Barang) akan diarahkan ke halaman data mahasiswa
+            if ($_SESSION['level'] != 1 and $_SESSION['level'] != 2) {
+                header("Location: mahasiswa.php");
+            } else {
+                header("Location: index.php");
+            }
             exit;
         }
     }
