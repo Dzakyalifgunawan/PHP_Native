@@ -1,5 +1,8 @@
 <?php
 
+// untuk menerima user yang login 
+session_start();
+
 // membatasi halaman sebelum login
 if (!isset($_SESSION['login'])) {
     echo "<script>

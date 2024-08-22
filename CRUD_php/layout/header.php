@@ -33,6 +33,10 @@ include 'config/app.php';
                         <a class="nav-link" href="modal.php">Modal</a>
                     </div>
                 </div>
+                <div class="navbar-nav">
+                    <a class="navbar-brand" href="#"><?= $_SESSION['nama']; ?></a>
+                    <a class="nav-link" href="logout.php">Log Out</a>
+                </div>
             </div>
         </nav>
     </div>
