@@ -11,6 +11,15 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
+// membatasi halaman sesuai user login
+if ($_SESSION['level'] != 1 and $_SESSION['level'] != 3) {
+    echo "<script>
+        alert('Anda tidak mempunyai Akses Data Barang');
+        document.location.href = 'index.php';
+        </script>";
+    exit;
+}
+
 $title = 'Daftar Mahasiswa';
 
 include 'layout/header.php';
@@ -24,6 +33,7 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC")
     <h1><i class="fas fa-solid fa-graduation-cap"></i> Data Mahasiswa</h1>
     <hr>
     <a href="create-mahasiswa.php" class="btn btn-primary mb-1">Tambah Data</a>
+    <a href="downloand-excel-mahasiswa.php" class="btn btn-success mb-1"><i class="fas fa-file-excel"></i> Download Excel</a>
     <table class="table table-bordered table-striped mt-3" id="table">
         <thead>
             <tr>

@@ -12,6 +12,15 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
+// membatasi halaman sesuai user login
+if ($_SESSION['level'] != 1 and $_SESSION['level'] != 2) {
+    echo "<script>
+        alert('Anda tidak mempunyai Akses Data Mahasiswa');
+        document.location.href = 'mahasiswa.php';
+        </script>";
+    exit;
+}
+
 $title = 'Data Barang';
 
 include 'layout/header.php';
