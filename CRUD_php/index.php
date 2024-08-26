@@ -39,6 +39,7 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC");
                 <th scope="col">Nama</th>
                 <th scope="col">Jumlah</th>
                 <th scope="col">Harga</th>
+                <th scope="col">Barcode</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Aksi</th>
             </tr>
@@ -51,6 +52,9 @@ $data_barang = select("SELECT * FROM barang ORDER BY id_barang DESC");
                     <td><?= $barang['nama']; ?></td>
                     <td><?= $barang['jumlah']; ?></td>
                     <td>Rp. <?= number_format($barang['harga'], 0, ',', '.'); ?></td>
+                    <td>
+                        <img src="barcode.php?codetype=Code128&size=50&text=<?= $barang['barcode']; ?>&print=true" alt="barcode" />
+                    </td>
                     <!-- strtotime() fungsinya mengubah string menjadi waktu -->
                     <td><?= date('d-m-Y | H:i:s', strtotime($barang['tanggal'])); ?></td>
                     <td width="15%" class="text-center">
