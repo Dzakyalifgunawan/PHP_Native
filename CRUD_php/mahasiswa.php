@@ -43,6 +43,7 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC")
                 <th scope="col">Program Studi</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Telepon</th>
+                <th scope="col">Alamat</th>
                 <th scope="col">Email</th>
                 <th scope="col">Aksi</th>
             </tr>
@@ -56,6 +57,7 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC")
                     <td><?= $mahasiswa['prodi']; ?></td>
                     <td><?= $mahasiswa['jk']; ?></td>
                     <td><?= $mahasiswa['telepon']; ?></td>
+                    <td><?= $mahasiswa['alamat']; ?></td>
                     <td><?= $mahasiswa['email']; ?></td>
                     <td width="15%" class="text-center">
                         <a class="btn btn-secondary" href="show-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" role="button"><i class="fas fa-solid fa-eye"></i> Detail</a>

@@ -16,6 +16,13 @@
 <!-- Load fontawesome with cdn -->
 <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 
+<!-- Load CKeditor cdn -->
+<script src="https://cdn.ckeditor.com/4.22.1/basic/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace('alamat');
+</script>
+
 </body>
 
 </html>

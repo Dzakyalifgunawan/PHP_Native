@@ -84,6 +84,7 @@ function create_mahasiswa($post)
     $prodi = strip_tags($post['prodi']);
     $jk = strip_tags($post['jk']);
     $telepon = strip_tags($post['telepon']);
+    $alamat = strip_tags($post['alamat']);
     $email = strip_tags($post['email']);
     $foto = upload_file();
 
@@ -93,7 +94,7 @@ function create_mahasiswa($post)
     }
 
     // query tambah data
-    $query = "INSERT INTO mahasiswa VALUES (null, '$nama', '$prodi', '$jk', '$telepon', '$email', '$foto')";
+    $query = "INSERT INTO mahasiswa VALUES (null, '$nama', '$prodi', '$jk', '$telepon', '$alamat', '$email', '$foto')";
 
 
     mysqli_query($db, $query);
@@ -113,6 +114,7 @@ function update_mahasiswa($post)
     $prodi = strip_tags($post['prodi']);
     $jk = strip_tags($post['jk']);
     $telepon = strip_tags($post['telepon']);
+    $alamat = strip_tags($post['alamat']);
     $email = strip_tags($post['email']);
     $fotolama = strip_tags($post['fotolama']);
 
@@ -125,7 +127,7 @@ function update_mahasiswa($post)
     }
 
     // query ubah data
-    $query = "UPDATE mahasiswa SET nama= '$nama', prodi = '$prodi', jk = '$jk' , telepon = '$telepon', email = '$email', foto = '$foto' WHERE id_mahasiswa = $id_mahasiswa";
+    $query = "UPDATE mahasiswa SET nama= '$nama', prodi = '$prodi', jk = '$jk' , telepon = '$telepon', alamat = '$alamat', email = '$email', foto = '$foto' WHERE id_mahasiswa = $id_mahasiswa";
 
 
     mysqli_query($db, $query);

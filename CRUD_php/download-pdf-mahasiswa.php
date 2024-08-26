@@ -22,6 +22,7 @@ $content .= '
             <th>Program Studi</th>
             <th>Jenis Kelamin</th>
             <th>Telepon</th>
+            <th>Alamat</th>
             <th>Email</th>
             <th>Foto</th>
             </tr>';
@@ -35,6 +36,7 @@ foreach ($data_mahasiswa as $mahasiswa) {
                     <td>' . $mahasiswa['prodi'] . '</td>
                     <td>' . $mahasiswa['jk'] . '</td>
                     <td>' . $mahasiswa['telepon'] . '</td>
+                    <td>' . $mahasiswa['alamat'] . '</td>
                     <td>' . $mahasiswa['email'] . '</td>
                     <td><img src="assets/img/' . $mahasiswa['foto'] . '" class="gambar"></td>
                 </tr>';

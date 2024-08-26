@@ -34,8 +34,9 @@ $activeWorksheet->setCellValue('B2', 'Nama');
 $activeWorksheet->setCellValue('C2', 'Program Studi');
 $activeWorksheet->setCellValue('D2', 'Jenis Kelamin');
 $activeWorksheet->setCellValue('E2', 'Telepon');
-$activeWorksheet->setCellValue('F2', 'Email');
-$activeWorksheet->setCellValue('G2', 'Foto');
+$activeWorksheet->setCellValue('F2', 'Alamat');
+$activeWorksheet->setCellValue('G2', 'Email');
+$activeWorksheet->setCellValue('H2', 'Foto');
 
 $data_mahasiswa = select("SELECT * FROM mahasiswa");
 
@@ -48,8 +49,9 @@ foreach ($data_mahasiswa as $mahasiswa) {
     $activeWorksheet->setCellValue('C' . $start, $mahasiswa['prodi'])->getColumnDimension('C')->setAutoSize(true);
     $activeWorksheet->setCellValue('D' . $start, $mahasiswa['jk'])->getColumnDimension('D')->setAutoSize(true);
     $activeWorksheet->setCellValue('E' . $start, $mahasiswa['telepon'])->getColumnDimension('E')->setAutoSize(true);
-    $activeWorksheet->setCellValue('F' . $start, $mahasiswa['email'])->getColumnDimension('F')->setAutoSize(true);
-    $activeWorksheet->setCellValue('G' . $start, 'http://localhost/php_native/CRUD_php/assets/img/' . $mahasiswa['foto'])->getColumnDimension('G')->setAutoSize(true);
+    $activeWorksheet->setCellValue('F' . $start, $mahasiswa['alamat'])->getColumnDimension('F')->setAutoSize(true);
+    $activeWorksheet->setCellValue('G' . $start, $mahasiswa['email'])->getColumnDimension('G')->setAutoSize(true);
+    $activeWorksheet->setCellValue('H' . $start, 'http://localhost/php_native/CRUD_php/assets/img/' . $mahasiswa['foto'])->getColumnDimension('H')->setAutoSize(true);
 
 
     $start++;
