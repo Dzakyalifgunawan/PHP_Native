@@ -6,7 +6,7 @@ include 'config/app.php';
 
 // check apakah tombol login ditekan
 if (isset($_POST['login'])) {
-    // ambil input username dan password diambil dari atribu name
+    // ambil input username dan password diambil dari atribut name
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
     // check 
@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
             if ($_SESSION['level'] != 1 and $_SESSION['level'] != 2) {
                 header("Location: mahasiswa.php");
             } else {
-                header("Location: index.php");
+                header("Location: barang.php");
             }
             exit;
         }

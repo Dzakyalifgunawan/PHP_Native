@@ -14,8 +14,8 @@ if (!isset($_SESSION['login'])) {
 // membatasi halaman sesuai user login
 if ($_SESSION['level'] != 1 and $_SESSION['level'] != 3) {
     echo "<script>
-        alert('Anda tidak mempunyai Akses Data Barang');
-        document.location.href = 'index.php';
+        alert('Anda tidak mempunyai Akses Data Mahasiswa');
+        document.location.href = 'barang.php';
         </script>";
     exit;
 }

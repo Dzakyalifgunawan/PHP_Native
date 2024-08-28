@@ -29,7 +29,7 @@ include 'config/app.php';
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <?php if ($_SESSION['level'] == 1 or $_SESSION['level'] == 2) : ?>
-                            <a class="nav-link active" aria-current="page" href="index.php">Barang</a>
+                            <a class="nav-link active" aria-current="page" href="barang.php">Barang</a>
                         <?php endif; ?>
 
                         <?php if ($_SESSION['level'] == 1 or $_SESSION['level'] == 3) : ?>
